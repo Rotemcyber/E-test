@@ -1,6 +1,6 @@
 on:
   issue_comment:
-    types: [createdd] ##When the comment is 'created' then check if it's part of pull request. if so, run.
+    types: [created] ##When the comment is 'created' then check if it's part of pull request. if so, run.
 name: Automatic Rebase
 jobs:
   rebase:
