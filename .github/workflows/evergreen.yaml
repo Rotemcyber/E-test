@@ -20,7 +20,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - run: 'echo Created Rebase ${{ steps.auto-rebase.outputs.url }}'  
   badpull:
-    runs-on: [ubuntu-latest]
+    runs-on: ubuntu-latest
     name: bad pull request
     if: github.event.issue.pull_request != '' && !contains(github.event.comment.body, '/rebase')
     steps:
@@ -28,7 +28,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          filename: .github/no-rebase.md
+          filename: no-rebase.md
         id: create-issue
       - run: 'echo Created issue number ${{ steps.create-issue.outputs.number }}'
       - run: 'echo Created ${{ steps.create-issue.outputs.url }}'
