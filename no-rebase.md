@@ -7,4 +7,4 @@ Someone just pushed but did not ask for rebase, oh no! Here's who did it: {{ pay
 
 {{ date | date('dddd, MMMM Do HH:mm') }}
 
-in github
+in root
