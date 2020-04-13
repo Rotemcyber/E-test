@@ -1,4 +1,6 @@
 on:
+  pull_request:
+    types: [opened]
   issue_comment:
     types: [created] ##When the comment is 'created' then check if it's part of pull request. if so, run.
 name: Automatic Rebase
@@ -27,8 +29,6 @@ jobs:
       - uses: JasonEtco/create-an-issue@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          filename: no-rebase.md
         id: create-issue
       - run: 'echo Created issue number ${{ steps.create-issue.outputs.number }}'
       - run: 'echo Created ${{ steps.create-issue.outputs.url }}'
