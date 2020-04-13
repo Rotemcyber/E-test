@@ -1,0 +1,21 @@
+on:
+  pull_request:
+    types: [opened]
+name: Automatic Rebase
+jobs:
+  rebase:
+    name: Rebase
+    if: contains(github.event.body, '/rebase')
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+      id: checkout-step
+      with:
+        fetch-depth: 0
+    - run: 'echo Created Checkout ${{ steps.checkout-step.outputs.url }}'  
+    - name: Automatic Rebase
+      uses: cirrus-actions/rebase@1.2
+      id: auto-rebase
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - run: 'echo Created Rebase ${{ steps.auto-rebase.outputs.url }}'  
